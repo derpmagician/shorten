@@ -9,13 +9,13 @@ const Url = require('../models/Url');
 // http://localhost:3000/api/urls/shorten
 // Converts longUrl to shortUrl
 
-
+// This list all the db elements
 router.get('/shorten', async (req, res) => {
   const urls = await Url.find().sort('-_id');
 	res.json(urls);
 });
 
-
+// User post the long url
 router.post('/shorten', async (req, res) => {
   const { longUrl } = req.body;
   const baseUrl = process.env.BASE_URL;

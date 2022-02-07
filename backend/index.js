@@ -6,23 +6,28 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 
-const path = require('path');
 const app = express();
+const path = require('path');
 
 require('./database');
 
 app.set('port', process.env.PORT || 3000);
+
+// Midlewares
 app.use(morgan('dev'));
-// // app.use(cors());
+app.use(cors());
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 // // app.use(express.static('public'));
 
+// Routes
 app.use('/', require('./routes/index'));
 app.use('/api/urls', require('./routes/urls'));
 // app.use('/here', require('./routes/here'));
 
+
+// Init
 app.listen(app.get('port'), () => {
   console.log(`Server on port ${app.get('port')}`);
 });
