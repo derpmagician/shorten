@@ -16,11 +16,16 @@
             <label class="text-gray-700">URL to be shortened</label>
             <input type="url" placeholder="Insert URL" class="border-2 rounded-lg w-full h-12 px-4">
             <button class="bg-blue-400 text-white rounded-md font-semibold px-4 py-3 w-full" type="submit">Shorten URL</button>
+            <br>
           </div>
+          <div class="flex flex-col items-center space-y-4 hidden">
+            <label class="text-gray-700">URL Generated</label>
+            <input class="border-2 rounded-lg w-full h-12 px-4" id="url-generated">
+            <button class="bg-blue-400 text-white rounded-md font-semibold px-4 py-4 w-full">Copy URL</button>
         </div>
       </div>
-    </body>
-
-
-<!--TODO: hacer que tras la generacion de la URL aparezca otro campo con la URL y un boton de copiar URL-->
+    </div>
+  </body>
+  <!--TODO: hacer que tras la generacion de la URL aparezca otro campo con la URL y un boton de copiar URL-->
+  <!-- hacer que hidden sea removida o reemplazada para poder dejar visualizar la url acortada y el boton copiar-->
 </html>
