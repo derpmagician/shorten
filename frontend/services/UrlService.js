@@ -15,7 +15,7 @@ class UrlService {
 		console.log(data);
 	}
 
-	async postBook(url) {
+	async postUrl(url) {
 		const res = await fetch(this.URI, {
 			method: 'POST',
 			body: url,
