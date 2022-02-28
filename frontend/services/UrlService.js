@@ -9,8 +9,8 @@ class UrlService {
 		return urls;
 	}
 
-	async getUrl(Id) {
-		const res = await fetch(`${this.URI}/${bookId}`)
+	async getUrl(urlId) {
+		const res = await fetch(`${this.URI}/${urlId}`)
 		const data = await res.json();
 		console.log(data);
 	}
