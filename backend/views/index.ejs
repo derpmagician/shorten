@@ -6,27 +6,27 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <title>Document</title>
 </head>
 <body>
   <div class="container">
     <h1>URL Shrinker</h1>
-    <form action="/shorten" method="POST" class="my-4 form-inline">
+    <form onsubmit="" action="/shorten" method="POST" class="my-4 form-inline">
       <label for="longUrl" class="">Url</label>
       <input required placeholder="Url" type="url" name="longUrl" id="fullUrl" class="form-control col mr-2">
-      <button class="btn btn-success" onSubmit="geturl()" type="submit">Shrink</button>
+      <!-- <button class="btn btn-success" onClick="geturl()" type="submit">Shrink</button> -->
+      <div onClick="geturl()">Shorten</div>
     </form>
-    
+
     <table class="table table-striped table-responsive">
       <thead>
         <tr>
-          <th>Full URL</th>
           <th>Short URL</th>
 
         </tr>
         <tr id="short">
           <th></th>
-
         </tr>
       </thead>
       <tbody>
@@ -35,7 +35,7 @@
     </table>
   </div>
   <script>
-    const geturl = () => {
+    const geturl = (e) => {
 
       const arg = $("#fullUrl").val();
       console.log(arg);
@@ -45,14 +45,17 @@
 
       axios.post("http://localhost:3000/api/urls/shorten", parametros)
       .then(function(res) {
-        const ele = document.getElementById("short");
-        const myVar = res.data;
-        const html = `<th>${myVar.shortUrl}</th>`
-        ele.innerHTML  = html;
+        const shortEle = document.getElementById("short");
+        const data = res.data;
+        const html = `<th>${data.shortUrl}</th>`
+        shortEle.innerHTML  = html;
+
     })
     .catch(function(err) {});
-    };
     
+      e.preventDefault();
+    };
+
   </script>
 </body>
 </html>
