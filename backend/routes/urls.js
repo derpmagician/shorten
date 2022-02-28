@@ -13,7 +13,7 @@ const Url = require('../models/Url');
 // This list all the db elements
 router.get('/shorten', async (req, res) => {
   // const urls = await Url.find().sort('-_id');
-  const url = await Url.findOne('shortUrl');
+  // const url = await Url.findOne('shortUrl');
 	// res.json(urls);
   res.render('index')
 });
@@ -22,7 +22,7 @@ router.get('/shorten', async (req, res) => {
 router.post('/shorten', async (req, res) => {
   const { longUrl } = req.body;
   const baseUrl = process.env.BASE_URL;
-  
+
 
   // Check base url
   if (!validUrl.isUri(baseUrl)) {
@@ -51,6 +51,7 @@ router.post('/shorten', async (req, res) => {
         });
 
         await url.save();
+        
         // console.log(url.shortUrl);
         res.json(url);
         

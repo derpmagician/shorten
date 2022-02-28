@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <title>Document</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
     <form action="/shorten" method="POST" class="my-4 form-inline">
       <label for="longUrl" class="">Url</label>
       <input required placeholder="Url" type="url" name="longUrl" id="fullUrl" class="form-control col mr-2">
-      <button class="btn btn-success" type="submit">Shrink</button>
+      <button class="btn btn-success" onSubmit="geturl()" type="submit">Shrink</button>
     </form>
     
     <table class="table table-striped table-responsive">
@@ -23,11 +24,35 @@
           <th>Short URL</th>
 
         </tr>
+        <tr id="short">
+          <th></th>
+
+        </tr>
       </thead>
       <tbody>
-        
+
       </tbody>
     </table>
   </div>
+  <script>
+    const geturl = () => {
+
+      const arg = $("#fullUrl").val();
+      console.log(arg);
+      const parametros = {
+        longUrl: arg,
+      };
+
+      axios.post("http://localhost:3000/api/urls/shorten", parametros)
+      .then(function(res) {
+        const ele = document.getElementById("short");
+        const myVar = res.data;
+        const html = `<th>${myVar.shortUrl}</th>`
+        ele.innerHTML  = html;
+    })
+    .catch(function(err) {});
+    };
+    
+  </script>
 </body>
 </html>
