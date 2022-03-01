@@ -11,7 +11,7 @@
   <title>Shorten</title>
 </head>
 <body>
-    <div class="flex items-center justify-center h-screen bg-blue-100">
+    <main class="flex items-center justify-center h-screen bg-blue-100">
       <div class="bg-white rounded-2xl border shadow-xl p-10 max-w-lg">
         <div class="flex flex-col items-center space-y-4">
           <h1 class="font-bold text-2xl text-gray-700 w-4/6 text-center">Welcome to Shorten</h1>
@@ -29,7 +29,7 @@
           <!-- <button class="bg-blue-400 text-white rounded-md font-semibold px-4 py-4 w-full" onClick="copyToClipboard('short')">Copy URL</button> -->
         </div>
       </div>
-    </div>
+    </main>
   <script>
     const geturl = (e) => {
       const arg = $("#fullUrl").val();
@@ -41,8 +41,9 @@
       .then(function(res) {
         const shortEle = document.getElementById("short");
         const data = res.data;
-        const html = `<p class="text-gray-700">${data.shortUrl}</p>`
+        const html = `<p onclick="copyText()" class="text-gray-700">${data.shortUrl}</p>`
         shortEle.innerHTML  = html;
+        navigator.clipboard.writeText(data.shortUrl);
     })
     .catch(function(err) {});
     
@@ -77,4 +78,3 @@
   </div> -->
 </body>
 </html>
-
