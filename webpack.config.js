@@ -24,7 +24,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./backend/views/index.ejs",
+      // template: "./backend/views/index.ejs",
+      // template: "./backend/views/shorten.ejs",
+      template: "./frontend/shorten.html",
     }),
   ],
   devServer: {

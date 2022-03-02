@@ -15,7 +15,7 @@ app.set('port', process.env.PORT || 3000);
 
 // Midlewares
 app.use(morgan('dev'));
-// app.use(cors());
+app.use(cors());
 
 app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'ejs')
