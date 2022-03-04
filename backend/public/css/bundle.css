@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: rgb(128, 0, 128);
+  color: blue;
+}
+
+#btn:hover {
+  cursor: pointer;
+}
+
+#btn:active  {
+  background: green;
+  color: yellow;
+}

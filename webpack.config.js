@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode= process.env.NODE_ENV !== 'production';
 
 module.exports = {
@@ -17,9 +18,12 @@ module.exports = {
         loader: "babel-loader",
       },
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
-      },
+        test: /\.css/,
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      }
     ]
   },
   plugins: [
@@ -28,6 +32,9 @@ module.exports = {
       // template: "./backend/views/shorten.ejs",
       template: "./frontend/shorten.html",
     }),
+    new MiniCssExtractPlugin({
+      filename: "css/bundle.css"
+    })
   ],
   devServer: {
     open: true, // para abrir el navegador
