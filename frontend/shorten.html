@@ -29,17 +29,17 @@
           <div>
             <p id="msg"></p>
           </div>
-          
+
           <!-- <button class="bg-blue-400 text-white rounded-md font-semibold px-4 py-4 w-full" onClick="copyToClipboard('short')">Copy URL</button> -->
         </div>
       </div>
     </main>
   <script>
     const geturl = () => {
-      const arg = $("#fullUrl").val();
-      console.log(arg);
+      const fullUrlEle = $("#fullUrl").val();
+      console.log(fullUrlEle);
       const params = {
-        longUrl: arg,
+        longUrl: fullUrlEle,
       };
       axios.post("http://localhost:3000/api/urls/shorten", params)
       .then(function(res) {

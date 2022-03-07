@@ -1,8 +1,8 @@
 <!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><script src="https://unpkg.com/axios/dist/axios.min.js"></script><script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script><script src="https://cdn.tailwindcss.com"></script><title>Shorten</title><script defer="defer" src="bundle.js"></script><link href="css/bundle.css" rel="stylesheet"></head><body><main class="flex items-center justify-center h-screen bg-blue-100"><div class="bg-white rounded-2xl border shadow-xl p-10 max-w-lg"><div class="flex flex-col items-center space-y-4"><h1 class="font-bold text-2xl text-gray-700 w-4/6 text-center">Welcome to Shorten!!!</h1><p class="text-sm text-gray-500 text-center w-5/6">Our URL Shrinker.</p><label class="text-gray-700">Paste here the URL to shrink</label> <input type="url" placeholder="Insert URL" name="longUrl" id="fullUrl" class="border-2 rounded-lg w-full h-12 px-4"><div id="btn" class="bg-blue-400 text-white rounded-md font-semibold px-4 py-3 w-full" onclick="geturl()">Click here to shorten URL</div><br></div><div class="flex flex-col items-center space-y-4"><label class="text-gray-700">URL Generated</label><div class="flex items-center border-2 rounded-lg w-full h-12 px-4"><p class="text-center text-gray-400" id="short">URL Shortened</p></div><div><p id="msg"></p></div></div></div></main><script>const geturl = () => {
-      const arg = $("#fullUrl").val();
-      console.log(arg);
+      const fullUrlEle = $("#fullUrl").val();
+      console.log(fullUrlEle);
       const params = {
-        longUrl: arg,
+        longUrl: fullUrlEle,
       };
       axios.post("http://localhost:3000/api/urls/shorten", params)
       .then(function(res) {

@@ -51,10 +51,10 @@ router.post('/shorten', async (req, res) => {
         });
 
         await url.save();
-        
+
         // console.log(url.shortUrl);
         res.json(url);
-        
+
       }
     } catch (err) {
       console.error(err);
