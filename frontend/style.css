@@ -10,6 +10,6 @@ body {
 }
 
 #btn:active  {
-  background: green;
-  color: yellow;
+  background: #2EC662;
+  color: #FFFFFF;
 }
