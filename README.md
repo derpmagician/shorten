@@ -17,3 +17,5 @@ npm run dev
 ```bash
 npm run server:dev
 ```
+
+![example](https://i.imgur.com/1klVC95.png)
