@@ -9,6 +9,7 @@
     "dev": "cross-env NODE_ENV=development nodemon backend/index.js --ignore frontend",
     "start": "cross-env NODE_ENV=production node backend/index.js",
     "postinstall": "npm run build",
+    "both": "concurrently \"npm run dev\" \"npm run server:dev\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -31,6 +32,7 @@
     "@babel/preset-react": "^7.16.7",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
+    "concurrently": "^7.0.0",
     "css-loader": "^6.6.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",

@@ -15,8 +15,8 @@
       <div class="bg-white rounded-2xl border shadow-xl p-10 max-w-lg">
         <div class="flex flex-col items-center space-y-4">
           <h1 class="font-bold text-2xl text-gray-700 w-4/6 text-center">Welcome to Shorten!!!</h1>
-          <p class="text-sm text-gray-500 text-center w-5/6">Our URL Shortener.</p>
-          <label class="text-gray-700">URL to be shortened</label>
+          <p class="text-sm text-gray-500 text-center w-5/6">Our URL Shrinker.</p>
+          <label class="text-gray-700">Paste here the URL to shrink</label>
           <input type="url" placeholder="Insert URL" name="longUrl" id="fullUrl" class="border-2 rounded-lg w-full h-12 px-4">
           <div id="btn" class="bg-blue-400 text-white rounded-md font-semibold px-4 py-3 w-full" onClick="geturl()">Click here to shorten URL</div>
           <br>
@@ -26,28 +26,38 @@
           <div class="flex items-center border-2 rounded-lg w-full h-12 px-4">
             <p class="text-center text-gray-400" id="short">URL Shortened</p>
           </div>
+          <div>
+            <p id="msg"></p>
+          </div>
+
           <!-- <button class="bg-blue-400 text-white rounded-md font-semibold px-4 py-4 w-full" onClick="copyToClipboard('short')">Copy URL</button> -->
         </div>
       </div>
     </main>
   <script>
-    const geturl = (e) => {
-      const arg = $("#fullUrl").val();
-      console.log(arg);
-      const parametros = {
-        longUrl: arg,
+    const geturl = () => {
+      const fullUrlEle = $("#fullUrl").val();
+      console.log(fullUrlEle);
+      const params = {
+        longUrl: fullUrlEle,
       };
-      axios.post("http://localhost:3000/api/urls/shorten", parametros)
+      axios.post("http://localhost:3000/api/urls/shorten", params)
       .then(function(res) {
         const shortEle = document.getElementById("short");
+        const msgEle = $('#msg');
         const data = res.data;
-        const html = `<p onclick="copyText()" class="text-gray-700">${data.shortUrl}</p>`
+        const html = `<p onclick="copyText()" class="text-gray-700 font-semibold px-4 py-4">${data.shortUrl}</p>`
         shortEle.innerHTML  = html;
         navigator.clipboard.writeText(data.shortUrl);
+
+        msgEle.show().html(`
+          <div class="bg-green-400 text-white rounded-md font-semibold px-4 py-3 w-full">Link copied to clipboard<div>
+        `);
+        setTimeout(function(){ msgEle.hide().html('');}, 3000); // 3 seconds later, hide
+
     })
     .catch(function(err) {});
-    
-      e.preventDefault();
+
     };
   </script>
 </body>
