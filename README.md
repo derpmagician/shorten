@@ -19,3 +19,7 @@ npm run server:dev
 ```
 
 ![example](https://i.imgur.com/1klVC95.png)
+
+## Authors
+[Miguel Pacheco](https://github.com/Miguel22247)
+[Renzo Perez](https://github.com/derpmagician/)
