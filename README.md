@@ -8,15 +8,15 @@ npm i
 ```
 
 ## Execution
-To run de app you need 2 instances
-1st:
+To run de app just execute
 ```bash
-npm run dev
+npm run both
 ```
-2nd:
-```bash
-npm run server:dev
-```
+The frontend will appear in this direction
+
+http://localhost:3000/api/urls/shorten
+
+
 
 ![example](https://i.imgur.com/1klVC95.png)
 
